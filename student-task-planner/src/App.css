@@ -1,0 +1,337 @@
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top center, rgba(23, 111, 184, 0.55), transparent 28%),
+    radial-gradient(circle at bottom center, rgba(0, 207, 255, 0.45), transparent 18%),
+    linear-gradient(180deg, #061d35 0%, #03101f 38%, #02070d 72%, #000308 100%);
+  color: #e8f7ff;
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 42px 16px;
+}
+
+.hero-section {
+  max-width: 900px;
+  margin: 0 auto 28px;
+  text-align: center;
+  animation: fadeSlideUp 0.75s ease both;
+}
+
+.hero-section h1 {
+  margin: 0;
+  font-size: 44px;
+  letter-spacing: -1.5px;
+  color: #dff6ff;
+  text-shadow: 0 0 22px rgba(0, 207, 255, 0.28);
+}
+
+.hero-section p {
+  max-width: 680px;
+  margin: 14px auto 0;
+  color: #a7dff0;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.form-card,
+.list-card {
+  max-width: 930px;
+  margin: 0 auto 22px;
+  background: rgba(8, 28, 48, 0.82);
+  backdrop-filter: blur(16px);
+  border: none;
+  border-radius: 28px;
+  padding: 26px;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.45),
+    0 0 32px rgba(0, 207, 255, 0.13);
+  animation: fadeSlideUp 0.8s ease both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.list-card {
+  animation-delay: 0.15s;
+}
+
+.form-card:hover,
+.list-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 30px 85px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(0, 207, 255, 0.2);
+}
+
+.form-card h2,
+.list-card h2 {
+  margin: 0 0 6px;
+  color: #8feaff;
+  text-align: center;
+}
+
+.section-description {
+  margin: 0 0 18px;
+  color: #a7dff0;
+  text-align: center;
+}
+
+.task-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 0;
+}
+
+.task-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 700;
+  color: #b8ecff;
+  font-size: 14px;
+}
+
+.task-form input,
+.task-form select,
+.search-input,
+.filter-bar select {
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 14px;
+  background: rgba(232, 247, 255, 0.96);
+  color: #061d35;
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(0, 207, 255, 0.16);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.task-form input:focus,
+.task-form select:focus,
+.search-input:focus,
+.filter-bar select:focus {
+  box-shadow:
+    0 0 0 3px rgba(0, 207, 255, 0.22),
+    0 0 18px rgba(0, 207, 255, 0.2);
+}
+
+.task-form button {
+  grid-column: 1 / -1;
+}
+
+.task-form button,
+.task-actions button {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #00cfff, #176fb8);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 10px 26px rgba(0, 207, 255, 0.24);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-form button:hover,
+.task-actions button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 34px rgba(0, 207, 255, 0.36);
+}
+
+.tools-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  margin-bottom: 18px;
+  align-items: center;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.task-list {
+  display: grid;
+  gap: 14px;
+}
+
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border: none;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(232, 247, 255, 0.95), rgba(185, 230, 245, 0.9));
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.22),
+    0 0 18px rgba(0, 207, 255, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeSlideUp 0.5s ease both;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.28),
+    0 0 24px rgba(0, 207, 255, 0.18);
+}
+
+.task-card.completed {
+  background: linear-gradient(135deg, rgba(174, 245, 255, 0.95), rgba(122, 220, 238, 0.9));
+}
+
+.task-card.completed h3 {
+  text-decoration: line-through;
+  color: #176fb8;
+}
+
+.task-card h3 {
+  margin: 0 0 10px;
+  color: #061d35;
+  font-size: 20px;
+}
+
+.task-card p {
+  margin: 6px 0;
+  color: #12334d;
+}
+
+.task-card strong {
+  color: #176fb8;
+}
+
+.task-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 110px;
+}
+
+.task-actions .delete-btn {
+  background: linear-gradient(135deg, #e85d75, #8f1025);
+  box-shadow: 0 10px 24px rgba(232, 93, 117, 0.26);
+}
+
+.task-actions .delete-btn:hover {
+  box-shadow: 0 14px 30px rgba(232, 93, 117, 0.36);
+}
+
+.empty-message {
+  text-align: center;
+  color: #a7dff0;
+  padding: 26px;
+  background: rgba(8, 28, 48, 0.6);
+  border: none;
+  border-radius: 18px;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .task-form {
+    grid-template-columns: 1fr;
+  }
+
+  .tools-row {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+  }
+
+  .task-card {
+    flex-direction: column;
+  }
+
+  .task-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .hero-section h1 {
+    font-size: 34px;
+  }
+
+  .form-card,
+  .list-card {
+    padding: 18px;
+  }
+
+  @supports (animation-timeline: view()) {
+    .task-card {
+      animation: taskReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 25%;
+    }
+  
+    .form-card,
+    .list-card {
+      animation: sectionReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+  }
+  
+  @keyframes taskReveal {
+    from {
+      opacity: 0;
+      transform: translateY(35px) scale(0.96);
+      filter: blur(6px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+  
+  @keyframes sectionReveal {
+    from {
+      opacity: 0;
+      transform: translateY(45px);
+      filter: blur(8px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+}
